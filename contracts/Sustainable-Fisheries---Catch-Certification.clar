@@ -221,6 +221,14 @@
   )
 )
 
+(define-public (update-iot-device (boat-id (string-ascii 64)) (new-iot-device-id (string-ascii 64)))
+  (let ((boat (unwrap! (map-get? boats { boat-id: boat-id }) err-not-found)))
+    (asserts! (is-eq (get owner boat) tx-sender) err-unauthorized)
+    (asserts! (get verified boat) err-unauthorized)
+    (ok (map-set boats { boat-id: boat-id } (merge boat { iot-device-id: new-iot-device-id })))
+  )
+)
+
 (define-read-only (get-boat-info (boat-id (string-ascii 64)))
   (map-get? boats { boat-id: boat-id })
 )

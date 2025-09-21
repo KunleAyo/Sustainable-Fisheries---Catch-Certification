@@ -1,5 +1,3 @@
-# 🐟 Sustainable Fisheries & Catch Certification
-
 A blockchain-based smart contract system for tracking and verifying sustainable fishing catches, preventing overfishing and ensuring seafood traceability.
 
 ## 🌊 Features
@@ -63,8 +61,9 @@ clarinet console
 - `remove-verifier(verifier)` - Remove catch verifier
 - `update-quota(species, boat-id, new-quota)` - Update existing quota
 
-### 🚤 Boat Owner Functions  
+### 🚤 Boat Owner Functions
 - `register-boat(boat-id, vessel-name, license, iot-device-id)` - Register new vessel
+- `update-iot-device(boat-id, new-iot-device-id)` - Update IoT device ID for verified boats
 - `record-catch(boat-id, species, weight, lat, lon, iot-device-id)` - Log new catch
 
 ### ✅ Verifier Functions
