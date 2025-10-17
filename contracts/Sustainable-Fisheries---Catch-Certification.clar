@@ -283,3 +283,48 @@
     err-not-found
   )
 )
+
+(define-map catch-reports
+  { report-id: (string-ascii 64) }
+  {
+    reporter: principal,
+    catch-id: (string-ascii 64),
+    reason: (string-ascii 256),
+    timestamp: uint,
+    resolved: bool
+  }
+)
+
+(define-data-var next-report-id uint u1)
+
+(define-public (report-catch-issue (catch-id (string-ascii 64)) (reason (string-ascii 256)))
+  (let ((report-id (int-to-ascii (var-get next-report-id))))
+    (asserts! (is-some (map-get? catch-records { catch-id: catch-id })) err-not-found)
+    (map-set catch-reports
+      { report-id: report-id }
+      {
+        reporter: tx-sender,
+        catch-id: catch-id,
+        reason: reason,
+        timestamp: burn-block-height,
+        resolved: false
+      }
+    )
+    (var-set next-report-id (+ (var-get next-report-id) u1))
+    (ok report-id)
+  )
+)
+
+(define-public (resolve-report (report-id (string-ascii 64)))
+  (let ((report (unwrap! (map-get? catch-reports { report-id: report-id }) err-not-found)))
+    (asserts! (is-eq tx-sender contract-owner) err-owner-only)
+    (ok (map-set catch-reports
+      { report-id: report-id }
+      (merge report { resolved: true })
+    ))
+  )
+)
+
+(define-read-only (get-report-info (report-id (string-ascii 64)))
+  (map-get? catch-reports { report-id: report-id })
+)

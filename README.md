@@ -69,14 +69,19 @@ clarinet console
 ### ✅ Verifier Functions
 - `verify-catch(catch-id)` - Verify recorded catch
 
+### 🚨 Reporting Functions
+- `report-catch-issue(catch-id, reason)` - Report potential issues with catches
+- `resolve-report(report-id)` - Admin resolution of reported issues
+
 ### 📖 Read-Only Functions
 - `get-boat-info(boat-id)` - Get boat registration details
-- `get-catch-info(catch-id)` - Get catch record details  
+- `get-catch-info(catch-id)` - Get catch record details
 - `get-quota-info(species, boat-id)` - Get quota information
 - `get-qr-info(qr-code)` - Get QR code details
 - `get-remaining-quota(species, boat-id)` - Check remaining quota
 - `is-catch-valid(catch-id)` - Check if catch is IoT and manually verified
 - `validate-supply-chain(qr-code)` - Full supply chain validation
+- `get-report-info(report-id)` - Get details of a reported issue
 
 ## 🔄 Workflow
 
@@ -96,6 +101,7 @@ clarinet console
 - Time-based QR code expiry
 - GPS coordinate validation
 - Role-based access control
+- Community-driven issue reporting for enhanced transparency
 
 ## 📊 Data Structures
 
@@ -104,12 +110,14 @@ clarinet console
 - **Catch Records**: Weight, location, timestamps, verification status
 - **QR Registry**: Traceability codes with expiry and verification
 - **Verifiers**: Authorized personnel for catch validation
+- **Catch Reports**: Issue reporting system for suspicious catches
 
 ## 🌍 Impact
 
 This system helps combat illegal fishing by providing:
 - Transparent catch tracking from boat to consumer
-- Automated quota enforcement  
+- Automated quota enforcement
 - Immutable record keeping
 - Real-time IoT verification
 - End-to-end supply chain visibility
+- Community-powered issue reporting for suspicious activities
