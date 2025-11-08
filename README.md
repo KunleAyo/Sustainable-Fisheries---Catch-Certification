@@ -8,6 +8,7 @@ A blockchain-based smart contract system for tracking and verifying sustainable 
 - 📱 **QR Code Traceability**: Generate unique QR codes for seafood supply chain tracking
 - ✅ **Verification System**: Multi-level verification for catches and supply chain integrity
 - 🔒 **Access Control**: Role-based permissions for boat owners, verifiers, and administrators
+- 🔄 **Boat Ownership Transfer**: Secure transfer of verified boat ownership between principals
 
 ## 🚀 Quick Start
 
@@ -64,6 +65,7 @@ clarinet console
 ### 🚤 Boat Owner Functions
 - `register-boat(boat-id, vessel-name, license, iot-device-id)` - Register new vessel
 - `update-iot-device(boat-id, new-iot-device-id)` - Update IoT device ID for verified boats
+- `transfer-boat-ownership(boat-id, new-owner)` - Transfer verified boat ownership to another principal
 - `record-catch(boat-id, species, weight, lat, lon, iot-device-id)` - Log new catch
 
 ### ✅ Verifier Functions
@@ -102,6 +104,7 @@ clarinet console
 - GPS coordinate validation
 - Role-based access control
 - Community-driven issue reporting for enhanced transparency
+- Secure boat ownership transfers for verified vessels
 
 ## 📊 Data Structures
 

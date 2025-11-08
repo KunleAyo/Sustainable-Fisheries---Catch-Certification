@@ -229,6 +229,14 @@
   )
 )
 
+(define-public (transfer-boat-ownership (boat-id (string-ascii 64)) (new-owner principal))
+  (let ((boat (unwrap! (map-get? boats { boat-id: boat-id }) err-not-found)))
+    (asserts! (is-eq (get owner boat) tx-sender) err-unauthorized)
+    (asserts! (get verified boat) err-unauthorized)
+    (ok (map-set boats { boat-id: boat-id } (merge boat { owner: new-owner })))
+  )
+)
+
 (define-read-only (get-boat-info (boat-id (string-ascii 64)))
   (map-get? boats { boat-id: boat-id })
 )
