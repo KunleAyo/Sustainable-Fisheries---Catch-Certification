@@ -57,6 +57,7 @@ clarinet console
 
 ### 🔧 Admin Functions
 - `verify-boat(boat-id)` - Verify a registered boat
+- `revoke-boat-verification(boat-id)` - Revoke verification of a boat
 - `set-species-quota(species, boat-id, quota, season-start, season-end)` - Set fishing quotas
 - `add-verifier(verifier)` - Add authorized catch verifier
 - `remove-verifier(verifier)` - Remove catch verifier
@@ -99,12 +100,13 @@ clarinet console
 
 - IoT device verification prevents spoofed catch records
 - Multi-signature verification system
-- Quota enforcement at blockchain level  
+- Quota enforcement at blockchain level
 - Time-based QR code expiry
 - GPS coordinate validation
 - Role-based access control
 - Community-driven issue reporting for enhanced transparency
 - Secure boat ownership transfers for verified vessels
+- Dynamic boat verification revocation for enhanced compliance
 
 ## 📊 Data Structures
 

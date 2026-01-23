@@ -92,6 +92,13 @@
   )
 )
 
+(define-public (revoke-boat-verification (boat-id (string-ascii 64)))
+  (let ((boat (unwrap! (map-get? boats { boat-id: boat-id }) err-not-found)))
+    (asserts! (is-eq tx-sender contract-owner) err-owner-only)
+    (ok (map-set boats { boat-id: boat-id } (merge boat { verified: false })))
+  )
+)
+
 (define-public (set-species-quota (species-code (string-ascii 32))
                                  (boat-id (string-ascii 64))
                                  (annual-quota uint)
